@@ -1,29 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container bg-primary bg-opacity-50 shadow-lg">
+  <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <h1 class="text-white">Posts</h1>
+  <div class="row row-cols-2 row-cols-md-3 g-5">
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col">
+        <%= image_tag post.image.variant(resize: "300x300"), class: "img-thumbnail"%>
+      </div>
+      <div class="col">
+        <%= image_tag post.image.variant(resize: "300x300"), class: "img-fluid rounded"%>
+      </div>
+      <div class="col">
+        <%= image_tag post.image.variant(resize: "300x300"), class: "img-fluid rounded-circle"%>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <br>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+  <%= link_to 'New Post', new_post_path %>
+</div>
