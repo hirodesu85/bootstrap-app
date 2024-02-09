@@ -1,7 +1,7 @@
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div class="alert alert-danger">
+      <h2 class="alert-heading"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
         <% post.errors.each do |error| %>
@@ -11,22 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="row gx-2 mb-4">
+    <%= form.label :title, class: "col-md-3 col-form-label text-md-end" %>
+    <div class="col-md-5">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="row gx-2 mb-4">
+    <%= form.label :body, class: "col-md-3 col-form-label text-md-end" %>
+    <div class="col-md-9">
+      <%= form.text_area :body, class: "form-control" %>
+      <div class="form-text">補足説明を書くこともできます。</div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image, accept: "image/*" %>
+  <div class="row gx-2 mb-4">
+    <%= form.label :image, class: "col-md-3 col-form-label text-md-end" %>
+    <div class="col-md-3">
+      <%= form.file_field :image, accept: "image/*", class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row">
+    <div class="col-12 text-end">
+      <%= form.submit "送信", class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

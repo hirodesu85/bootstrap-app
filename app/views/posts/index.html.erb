@@ -2,6 +2,48 @@
   <p id="notice"><%= notice %></p>
 
   <h1 class="text-white">Posts</h1>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered border-primary table-hover caption-top">
+      <caption>List of Posts</caption>
+      <thead>
+        <tr class="table-dark">
+          <th>Title</th>
+          <th>Content</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= post.body %></td>
+            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mb-3 g-3">
+    <% @posts.each do |post| %>
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-warning">
+          <h4 class="card-header">遊戯王</h4>
+          <%= image_tag post.image.variant(resize: "300x300"), class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text"><%= post.body %></p>
+            <%= link_to 'Show', post_path(post.id), class: "card_link" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <div class="row row-cols-2 row-cols-md-3 g-5">
     <% @posts.each do |post| %>
       <div class="col">
